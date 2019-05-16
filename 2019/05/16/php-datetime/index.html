@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>php 时间处理 | HuangTeng VS Victor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的  strtotime()  函数只能适用于英文日期,查找PHP手册找到  date_create_from_format 函数date_create_from_format() 其原型–为 DateTime::createFromFormat() 根据给定的格式解析日期时间字符串 示例 1  j.n.y H:i:s时间转为Y-m-d H:i:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php 时间处理">
+<meta property="og:url" content="http://yoursite.com/2019/05/16/php-datetime/index.html">
+<meta property="og:site_name" content="HuangTeng VS Victor">
+<meta property="og:description" content="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的  strtotime()  函数只能适用于英文日期,查找PHP手册找到  date_create_from_format 函数date_create_from_format() 其原型–为 DateTime::createFromFormat() 根据给定的格式解析日期时间字符串 示例 1  j.n.y H:i:s时间转为Y-m-d H:i:">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-16T10:41:16.056Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php 时间处理">
+<meta name="twitter:description" content="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的  strtotime()  函数只能适用于英文日期,查找PHP手册找到  date_create_from_format 函数date_create_from_format() 其原型–为 DateTime::createFromFormat() 根据给定的格式解析日期时间字符串 示例 1  j.n.y H:i:s时间转为Y-m-d H:i:">
+  
+    <link rel="alternate" href="/atom.xml" title="HuangTeng VS Victor" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">HuangTeng VS Victor</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-php-datetime" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/16/php-datetime/" class="article-date">
+  <time datetime="2019-05-16T10:09:51.000Z" itemprop="datePublished">2019-05-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      php 时间处理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的-strtotime-函数只能适用于英文日期-查找PHP手册找到-date-create-from-format-函数date-create-from-format-其原型–为-DateTime-createFromFormat-根据给定的格式解析日期时间字符串"><a href="#工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的-strtotime-函数只能适用于英文日期-查找PHP手册找到-date-create-from-format-函数date-create-from-format-其原型–为-DateTime-createFromFormat-根据给定的格式解析日期时间字符串" class="headerlink" title="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的  strtotime()  函数只能适用于英文日期,查找PHP手册找到  date_create_from_format 函数date_create_from_format() 其原型–为 DateTime::createFromFormat() 根据给定的格式解析日期时间字符串 "></a><strong><em>工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的 <font color="red"> strtotime() </font> 函数只能适用于英文日期,查找PHP手册找到 <font color="red"> date_create_from_format</font> 函数<font color="red">date_create_from_format()</font> 其原型–为 <font color="red">DateTime::createFromFormat()</font> 根据给定的格式解析日期时间字符串 </em></strong></h3><h4 id="示例-1-j-n-y-H-i-s时间转为Y-m-d-H-i-s格式"><a href="#示例-1-j-n-y-H-i-s时间转为Y-m-d-H-i-s格式" class="headerlink" title="示例 1  j.n.y H:i:s时间转为Y-m-d H:i:s格式"></a>示例 1  <strong><em><font color="grey">j.n.y H:i:s时间转为Y-m-d H:i:s格式</font></em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date_create_from_format(&apos;j.n.y H:i:s&apos;, &quot;05.04.19 19:07:39&quot;)-&gt;format(&apos;Y-m-d H:i:s&apos;)</span><br><span class="line">输出:2019-04-05 19:07:39</span><br></pre></td></tr></table></figure>
+<h4 id="示例-2-j-n-y-H-i-s时间转为Ymd格式"><a href="#示例-2-j-n-y-H-i-s时间转为Ymd格式" class="headerlink" title="示例 2  j.n.y H:i:s时间转为Ymd格式"></a>示例 2  <strong><em><font color="grey">j.n.y H:i:s时间转为Ymd格式</font></em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date_create_from_format(&apos;j.n.y H:i:s&apos;, &quot;05.04.19 19:07:39&quot;)-&gt;format(&apos;Ymd&apos;)</span><br><span class="line">输出:20190405</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/16/php-datetime/" data-id="cjvqi1j6m0001ny652edt8klv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/10/operation/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">对ES日常操作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/16/php-datetime/">php 时间处理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/10/operation/">对ES日常操作</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/10/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 victor<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
