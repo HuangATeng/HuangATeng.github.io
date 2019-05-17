@@ -5,19 +5,19 @@
   
 
   
-  <title>对ES日常操作 | HuangTeng VS Victor</title>
+  <title>ES5.6使用 | HuangTeng VS Victor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对ES5.x版本文字段类聚合操作报错处理Fielddata is disabled on text fields by default. Set fielddata=true on [color] in order to load fielddata in memory by uninverting the inverted index. Note that this can however us">
+  <meta name="description" content="对ES5.x版本文字段类型(string)聚合操作报错处理Fielddata is disabled on text fields by default. Set fielddata=true on [color] in order to load fielddata in memory by uninverting the inverted index. Note that this can h">
 <meta property="og:type" content="article">
-<meta property="og:title" content="对ES日常操作">
+<meta property="og:title" content="ES5.6使用">
 <meta property="og:url" content="http://yoursite.com/2019/05/10/operation/index.html">
 <meta property="og:site_name" content="HuangTeng VS Victor">
-<meta property="og:description" content="对ES5.x版本文字段类聚合操作报错处理Fielddata is disabled on text fields by default. Set fielddata=true on [color] in order to load fielddata in memory by uninverting the inverted index. Note that this can however us">
+<meta property="og:description" content="对ES5.x版本文字段类型(string)聚合操作报错处理Fielddata is disabled on text fields by default. Set fielddata=true on [color] in order to load fielddata in memory by uninverting the inverted index. Note that this can h">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-10T09:23:04.579Z">
+<meta property="og:updated_time" content="2019-05-17T08:12:07.394Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="对ES日常操作">
-<meta name="twitter:description" content="对ES5.x版本文字段类聚合操作报错处理Fielddata is disabled on text fields by default. Set fielddata=true on [color] in order to load fielddata in memory by uninverting the inverted index. Note that this can however us">
+<meta name="twitter:title" content="ES5.6使用">
+<meta name="twitter:description" content="对ES5.x版本文字段类型(string)聚合操作报错处理Fielddata is disabled on text fields by default. Set fielddata=true on [color] in order to load fielddata in memory by uninverting the inverted index. Note that this can h">
   
     <link rel="alternate" href="/atom.xml" title="HuangTeng VS Victor" type="application/atom+xml">
   
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      对ES日常操作
+      ES5.6使用
     </h1>
   
 
@@ -86,13 +86,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="对ES5-x版本文字段类聚合操作报错处理"><a href="#对ES5-x版本文字段类聚合操作报错处理" class="headerlink" title="对ES5.x版本文字段类聚合操作报错处理"></a>对ES5.x版本文字段类聚合操作报错处理</h4><p><strong><em><font color="red">Fielddata is disabled on text fields by default. Set fielddata=true on [color] in order to load fielddata in memory by uninverting the inverted index. Note that this can however use significant memory.</font></em></strong></p>
+        <h4 id="对ES5-x版本文字段类型-string-聚合操作报错处理"><a href="#对ES5-x版本文字段类型-string-聚合操作报错处理" class="headerlink" title="对ES5.x版本文字段类型(string)聚合操作报错处理"></a>对ES5.x版本文字段类型(string)聚合操作报错处理</h4><p><strong><em><font color="red">Fielddata is disabled on text fields by default. Set fielddata=true on [color] in order to load fielddata in memory by uninverting the inverted index. Note that this can however use significant memory.</font></em></strong></p>
 <h5 id="针对以上问题使用字段名称-keywod可解决"><a href="#针对以上问题使用字段名称-keywod可解决" class="headerlink" title=" 针对以上问题使用字段名称.keywod可解决 "></a><strong><em> 针对以上问题使用字段名称.keywod可解决 </em></strong></h5><figure class="highlight plain"><figcaption><span>/_search</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;size&quot;: 0,</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;siteId&quot;: &#123;</span><br><span class="line">      &quot;terms&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;siteId&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;aggs&quot;: &#123;</span><br><span class="line">        &quot;sumbefore7SoldPrice&quot;: &#123;</span><br><span class="line">          &quot;sum&quot;: &#123;</span><br><span class="line">            &quot;field&quot;: &quot;before7SoldPrice&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;sellercount&quot; : &#123;</span><br><span class="line">            &quot;cardinality&quot; : &#123;</span><br><span class="line">              &quot;field&quot; : &quot;sellerId.keyword&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="删除ES指定条件数据"><a href="#删除ES指定条件数据" class="headerlink" title=" 删除ES指定条件数据 "></a><strong><em> 删除ES指定条件数据 </em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST &quot;http://host:9200/index/product/_delete_by_query&quot;  -H &apos;Content-Type: application/json&apos; -d&apos;&#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;bool&quot;: &#123;</span><br><span class="line">        &quot;filter&quot;: [&#123;</span><br><span class="line">        	&quot;range&quot;:&#123;</span><br><span class="line">        		&quot;timeLastUpdate&quot;:&#123;&quot;lt&quot;:1543622400&#125;</span><br><span class="line">          	&#125;</span><br><span class="line">        &#125; </span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="删除指定条件数据"><a href="#删除指定条件数据" class="headerlink" title=" 删除指定条件数据 "></a><strong><em> 删除指定条件数据 </em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST &quot;http://host:9200/index/product/_delete_by_query&quot;  -H &apos;Content-Type: application/json&apos; -d&apos;&#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;bool&quot;: &#123;</span><br><span class="line">        &quot;filter&quot;: [&#123;</span><br><span class="line">        	&quot;range&quot;:&#123;</span><br><span class="line">        		&quot;timeLastUpdate&quot;:&#123;&quot;lt&quot;:1543622400&#125;</span><br><span class="line">          	&#125;</span><br><span class="line">        &#125; </span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="根据两个字段差值查找"><a href="#根据两个字段差值查找" class="headerlink" title=" 根据两个字段差值查找 "></a><strong><em> 根据两个字段差值查找 </em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &quot;http://host:9200/index/product/_search&quot;  -H &apos;Content-Type: application/json&apos; -d&apos;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;:&#123;</span><br><span class="line">      &quot;bool&quot;:&#123;</span><br><span class="line">        &quot;filter&quot;:[&#123;</span><br><span class="line">            &quot;script&quot;:&#123;</span><br><span class="line">              &quot;script&quot;:&#123;</span><br><span class="line">                &quot;source&quot;: &quot;doc[\&quot;totalSold\&quot;].value - doc[\&quot;before7Sold\&quot;].value == 0&quot;,</span><br><span class="line">                &quot;lang&quot;: &quot;painless&quot;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&apos;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/operation/" data-id="cjvqi1j6f0000ny65sxs6j2k1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/10/operation/" data-id="cjvrsufkj0000zh65qsx4es18" class="article-share-link">Share</a>
       
       
     </footer>
@@ -154,7 +155,7 @@
           </li>
         
           <li>
-            <a href="/2019/05/10/operation/">对ES日常操作</a>
+            <a href="/2019/05/10/operation/">ES5.6使用</a>
           </li>
         
           <li>
