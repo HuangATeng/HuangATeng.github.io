@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>mac convert命令pdf转图片问题 | HuangTeng VS Victor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="convert pdf转图片失败处理提示以下错误1convert: no images defined `label.jpg&amp;apos; @ error/convert.c/ConvertImageCommand/3275. 安装 ghostscript 扩展1234先删除brew uninstall ghostscript后安装brew install ghostscript 解决convert">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mac convert命令pdf转图片问题">
+<meta property="og:url" content="http://yoursite.com/2019/05/24/convert/index.html">
+<meta property="og:site_name" content="HuangTeng VS Victor">
+<meta property="og:description" content="convert pdf转图片失败处理提示以下错误1convert: no images defined `label.jpg&amp;apos; @ error/convert.c/ConvertImageCommand/3275. 安装 ghostscript 扩展1234先删除brew uninstall ghostscript后安装brew install ghostscript 解决convert">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-24T02:20:28.778Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mac convert命令pdf转图片问题">
+<meta name="twitter:description" content="convert pdf转图片失败处理提示以下错误1convert: no images defined `label.jpg&amp;apos; @ error/convert.c/ConvertImageCommand/3275. 安装 ghostscript 扩展1234先删除brew uninstall ghostscript后安装brew install ghostscript 解决convert">
+  
+    <link rel="alternate" href="/atom.xml" title="HuangTeng VS Victor" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">HuangTeng VS Victor</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-convert" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/24/convert/" class="article-date">
+  <time datetime="2019-05-24T01:44:14.000Z" itemprop="datePublished">2019-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mac convert命令pdf转图片问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="convert-pdf转图片失败处理提示以下错误"><a href="#convert-pdf转图片失败处理提示以下错误" class="headerlink" title="convert pdf转图片失败处理提示以下错误"></a>convert <font color="red">pdf转图片失败处理提示以下错误</font></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert: no images defined `label.jpg&apos; @ error/convert.c/ConvertImageCommand/3275.</span><br></pre></td></tr></table></figure>
+<h4 id="安装-ghostscript-扩展"><a href="#安装-ghostscript-扩展" class="headerlink" title="安装 ghostscript 扩展"></a>安装 <strong><em><font color="red">ghostscript</font></em></strong> 扩展</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">先删除</span><br><span class="line">brew uninstall ghostscript</span><br><span class="line">后安装</span><br><span class="line">brew install ghostscript</span><br></pre></td></tr></table></figure>
+<h4 id="解决convert命令pdf抓图片变黑问题"><a href="#解决convert命令pdf抓图片变黑问题" class="headerlink" title="解决convert命令pdf抓图片变黑问题"></a>解决<font color="red">convert命令pdf抓图片变黑问题</font></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">去除透明度</span><br><span class="line">-alpha remove</span><br><span class="line"></span><br><span class="line">将背景设置为白色</span><br><span class="line">-background white</span><br><span class="line"></span><br><span class="line">convert -depth 16 -density 300 -quality 100  -background white -alpha remove 12121212121212a.pdf XXX.jpg</span><br></pre></td></tr></table></figure>
+<h4 id="convert应用"><a href="#convert应用" class="headerlink" title="convert应用"></a>convert应用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//大小缩放</span><br><span class="line">convert -resize 100x100 tets.jpg thumbnail.jpg</span><br><span class="line"></span><br><span class="line">//使用百分比，这样显的更为直观：</span><br><span class="line">convert -resize 50%x50% text.jpg thumbnail.jpg</span><br><span class="line"></span><br><span class="line">//convert会自动地考虑在缩放图像大小时图像的高宽的比例，也就是说着新的图像的高宽比与原图相同。 </span><br><span class="line">//批量生成缩略图：</span><br><span class="line">mogrify -sample 100x50 text.jpg</span><br><span class="line">//注意，此命令会覆盖原来的图片</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//在图片上加文字</span><br><span class="line">convert -fill red -pointsize 40 -draw &apos;text 20,50 &quot;hello world&quot;&apos; test.png new.png</span><br><span class="line">///上面的命令在距离图片的左上角20x50的位置，用绿色的字写下charry.org，如果你要指定别的字体，可以用-font参数。</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/24/convert/" data-id="cjw1ftp1r0000t165h8i7os5d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/16/php-datetime/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">php 时间处理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/24/convert/">mac convert命令pdf转图片问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/16/php-datetime/">php 时间处理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/10/operation/">ES5.6使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/10/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 victor<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
