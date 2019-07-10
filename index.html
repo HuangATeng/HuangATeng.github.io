@@ -89,7 +89,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/linux/" data-id="cjw943d2e0001m4654sy6fzps" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/linux/" data-id="cjxwzys4m0001m365cixn080w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -125,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/redis/" data-id="cjw943d2p0005m465koorjear" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/redis/" data-id="cjxwzys4u0005m365xvocsmue" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/convert/" data-id="cjw943d2j0003m465m746j45d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/convert/" data-id="cjxwzys4p0002m365q2ll83xg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -188,7 +188,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/16/php-datetime/">php 时间处理</a>
+      <a class="article-title" href="/2019/05/16/php-datetime/">php 常见问题处理</a>
     </h1>
   
 
@@ -198,11 +198,12 @@
       
         <h3 id="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的-strtotime-函数只能适用于英文日期-查找PHP手册找到-date-create-from-format-函数date-create-from-format-其原型–为-DateTime-createFromFormat-根据给定的格式解析日期时间字符串"><a href="#工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的-strtotime-函数只能适用于英文日期-查找PHP手册找到-date-create-from-format-函数date-create-from-format-其原型–为-DateTime-createFromFormat-根据给定的格式解析日期时间字符串" class="headerlink" title="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的  strtotime()  函数只能适用于英文日期,查找PHP手册找到  date_create_from_format 函数date_create_from_format() 其原型–为 DateTime::createFromFormat() 根据给定的格式解析日期时间字符串 "></a><strong><em>工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的 <font color="red"> strtotime() </font> 函数只能适用于英文日期,查找PHP手册找到 <font color="red"> date_create_from_format</font> 函数<font color="red">date_create_from_format()</font> 其原型–为 <font color="red">DateTime::createFromFormat()</font> 根据给定的格式解析日期时间字符串 </em></strong></h3><h4 id="示例-1-j-n-y-H-i-s时间转为Y-m-d-H-i-s格式"><a href="#示例-1-j-n-y-H-i-s时间转为Y-m-d-H-i-s格式" class="headerlink" title="示例 1  j.n.y H:i:s时间转为Y-m-d H:i:s格式"></a>示例 1  <strong><em><font color="grey">j.n.y H:i:s时间转为Y-m-d H:i:s格式</font></em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date_create_from_format(&apos;j.n.y H:i:s&apos;, &quot;05.04.19 19:07:39&quot;)-&gt;format(&apos;Y-m-d H:i:s&apos;)</span><br><span class="line">输出:2019-04-05 19:07:39</span><br></pre></td></tr></table></figure>
 <h4 id="示例-2-j-n-y-H-i-s时间转为Ymd格式"><a href="#示例-2-j-n-y-H-i-s时间转为Ymd格式" class="headerlink" title="示例 2  j.n.y H:i:s时间转为Ymd格式"></a>示例 2  <strong><em><font color="grey">j.n.y H:i:s时间转为Ymd格式</font></em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date_create_from_format(&apos;j.n.y H:i:s&apos;, &quot;05.04.19 19:07:39&quot;)-&gt;format(&apos;Ymd&apos;)</span><br><span class="line">输出:20190405</span><br></pre></td></tr></table></figure>
+<h3 id="php正则匹配script标签中的内容-一般使用-，但是一些html存在换行符此表达式不生效–使用”-s-S-”替代"><a href="#php正则匹配script标签中的内容-一般使用-，但是一些html存在换行符此表达式不生效–使用”-s-S-”替代" class="headerlink" title="php正则匹配script标签中的内容(一般使用(.*?)，但是一些html存在换行符此表达式不生效–使用”([\s\S]+?)”替代)"></a>php正则匹配script标签中的内容(一般使用(.*?)，但是一些html存在换行符此表达式不生效–使用”([\s\S]+?)”替代)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">preg_match(&apos;/(?&lt;=&lt;script.*?&gt;)([\s\S]+?)(?=&lt;\/script&gt;)/&apos;,file_get_contents(&apos;vv.html&apos;),$desc);</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/php-datetime/" data-id="cjw943d2m0004m465z2vwvnuo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/php-datetime/" data-id="cjxwzys4r0003m36574zye2i8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -241,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/operation/" data-id="cjw943d2h0002m465ocx3ea9k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/10/operation/" data-id="cjxwzys4s0004m3653ypd55ve" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/hello-world/" data-id="cjw943d270000m465p6n1jr6a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/10/hello-world/" data-id="cjxwzys4g0000m36557294o1q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -339,7 +340,7 @@
           </li>
         
           <li>
-            <a href="/2019/05/16/php-datetime/">php 时间处理</a>
+            <a href="/2019/05/16/php-datetime/">php 常见问题处理</a>
           </li>
         
           <li>
