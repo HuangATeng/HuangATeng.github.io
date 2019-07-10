@@ -89,7 +89,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/linux/" data-id="cjxx05lza0003pa65xrhqd0b7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/linux/" data-id="cjxx0etbv0003sd6533iokl98" class="article-share-link">Share</a>
       
       
     </footer>
@@ -125,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/redis/" data-id="cjxx05lze0005pa65zar0nd3n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/redis/" data-id="cjxx0etcc0005sd65bb3sznyb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/convert/" data-id="cjxx05lz20001pa65135mgqvi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/convert/" data-id="cjxx0etbi0001sd65jgevrs98" class="article-share-link">Share</a>
       
       
     </footer>
@@ -198,12 +198,12 @@
       
         <h3 id="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的-strtotime-函数只能适用于英文日期-查找PHP手册找到-date-create-from-format-函数date-create-from-format-其原型–为-DateTime-createFromFormat-根据给定的格式解析日期时间字符串"><a href="#工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的-strtotime-函数只能适用于英文日期-查找PHP手册找到-date-create-from-format-函数date-create-from-format-其原型–为-DateTime-createFromFormat-根据给定的格式解析日期时间字符串" class="headerlink" title="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的  strtotime()  函数只能适用于英文日期,查找PHP手册找到  date_create_from_format 函数date_create_from_format() 其原型–为 DateTime::createFromFormat() 根据给定的格式解析日期时间字符串 "></a><strong><em>工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的 <font color="red"> strtotime() </font> 函数只能适用于英文日期,查找PHP手册找到 <font color="red"> date_create_from_format</font> 函数<font color="red">date_create_from_format()</font> 其原型–为 <font color="red">DateTime::createFromFormat()</font> 根据给定的格式解析日期时间字符串 </em></strong></h3><h4 id="示例-1-j-n-y-H-i-s时间转为Y-m-d-H-i-s格式"><a href="#示例-1-j-n-y-H-i-s时间转为Y-m-d-H-i-s格式" class="headerlink" title="示例 1  j.n.y H:i:s时间转为Y-m-d H:i:s格式"></a>示例 1  <strong><em><font color="grey">j.n.y H:i:s时间转为Y-m-d H:i:s格式</font></em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date_create_from_format(&apos;j.n.y H:i:s&apos;, &quot;05.04.19 19:07:39&quot;)-&gt;format(&apos;Y-m-d H:i:s&apos;)</span><br><span class="line">输出:2019-04-05 19:07:39</span><br></pre></td></tr></table></figure>
 <h4 id="示例-2-j-n-y-H-i-s时间转为Ymd格式"><a href="#示例-2-j-n-y-H-i-s时间转为Ymd格式" class="headerlink" title="示例 2  j.n.y H:i:s时间转为Ymd格式"></a>示例 2  <strong><em><font color="grey">j.n.y H:i:s时间转为Ymd格式</font></em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date_create_from_format(&apos;j.n.y H:i:s&apos;, &quot;05.04.19 19:07:39&quot;)-&gt;format(&apos;Ymd&apos;)</span><br><span class="line">输出:20190405</span><br></pre></td></tr></table></figure>
-<h3 id="php正则匹配script标签中的内容-一般使用-，但是一些html存在换行符此表达式不生效–使用”-s-S-”替代"><a href="#php正则匹配script标签中的内容-一般使用-，但是一些html存在换行符此表达式不生效–使用”-s-S-”替代" class="headerlink" title="php正则匹配script标签中的内容(一般使用(.*?)，但是一些html存在换行符此表达式不生效–使用”([\s\S]+?)”替代)"></a>php正则匹配script标签中的内容(一般使用(.*?)，但是一些html存在换行符此表达式不生效–使用”([\s\S]+?)”替代)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">preg_match(&apos;/(?&lt;=&lt;script.*?&gt;)([\s\S]+?)(?=&lt;\/script&gt;)/&apos;,file_get_contents(&apos;vv.html&apos;),$desc);</span><br></pre></td></tr></table></figure>
+<h3 id="php正则匹配script标签中的内容-一般使用-，但是一些html存在换行符此表达式不生效–使用”-s-S-”替代"><a href="#php正则匹配script标签中的内容-一般使用-，但是一些html存在换行符此表达式不生效–使用”-s-S-”替代" class="headerlink" title="php正则匹配script标签中的内容(一般使用(.*?)，但是一些html存在换行符此表达式不生效–使用”([\s\S]+?)”替代)"></a>php正则匹配script标签中的内容(一般使用(.*?)，但是一些html存在换行符此表达式不生效–使用”([\s\S]+?)”替代)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">preg_match(&apos;/(?&lt;=&lt;script.*?&gt;)([\s\S]+?)(?=&lt;\/script&gt;)/&apos;,$contents,$match);</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/php-datetime/" data-id="cjxx05lzc0004pa65t9kn5dif" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/php-datetime/" data-id="cjxx0etbu0002sd65yk9tt7b0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -242,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/operation/" data-id="cjxx05lz80002pa658yo486gy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/10/operation/" data-id="cjxx0etcb0004sd652j8qjbc9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/hello-world/" data-id="cjxx05lyn0000pa65fruzpgij" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/10/hello-world/" data-id="cjxx0etba0000sd65tt2ha8dr" class="article-share-link">Share</a>
       
       
     </footer>
