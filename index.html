@@ -62,6 +62,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-php-str" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/18/php-str/" class="article-date">
+  <time datetime="2019-07-18T10:21:42.000Z" itemprop="datePublished">2019-07-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/18/php-str/">php-str字符串处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="PHP字符常用函数-substr、strrpos、strpos、strrchr，strstr使用记录"><a href="#PHP字符常用函数-substr、strrpos、strpos、strrchr，strstr使用记录" class="headerlink" title="PHP字符常用函数 substr、strrpos、strpos、strrchr，strstr使用记录"></a>PHP字符常用函数 substr、strrpos、strpos、strrchr，strstr使用记录</h2><h3 id="substr函数-string-substr-string-string-int-start-int-length"><a href="#substr函数-string-substr-string-string-int-start-int-length" class="headerlink" title="substr函数 ***string substr ( string $string , int $start [, int $length ] )"></a>substr函数 ***string substr ( string $string , int $start [, int $length ] )</h3><pre><code>返回字符串 string 由 start 和 length 参数指定的子字符串。***
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$str = &apos;ABCDEFABCDE&apos;;</span><br><span class="line">echo substr($str, 0, 5) . PHP_EOL;// ABCDE从首部开始截取5位</span><br><span class="line">echo substr($str, 0, -3) . PHP_EOL;// ABCDEFABCDE 从首部开始截取-3位</span><br><span class="line">echo substr($str, -3) . PHP_EOL;// CDE 从尾部开始截取3位</span><br><span class="line">echo substr($str, -5, 2) . PHP_EOL;// AB 从尾部第5位开始截取2位</span><br><span class="line">echo substr($str, -3, -1) . PHP_EOL;// CD 从尾部第3位开始截取-1位</span><br></pre></td></tr></table></figure>
+<h3 id="strrpos-函数-int-strrpos-string-haystack-string-needle-int-offset-0"><a href="#strrpos-函数-int-strrpos-string-haystack-string-needle-int-offset-0" class="headerlink" title="strrpos 函数 ***int strrpos ( string $haystack , string $needle [, int $offset = 0 ] )"></a>strrpos 函数 ***int strrpos ( string $haystack , string $needle [, int $offset = 0 ] )</h3><pre><code>返回字符串 haystack 中 needle 最后一次出现的数字位置。***
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$str = &apos;ABCDEFABCDE&apos;;</span><br><span class="line">echo strrpos($str, &apos;D&apos;) . PHP_EOL;// 9 字符串位置是从0开始</span><br><span class="line">echo strrpos($str, &apos;D&apos;, 4) . PHP_EOL;// 10 从第4位开始查找</span><br><span class="line">echo strrpos($str, &apos;D&apos;, 11) . PHP_EOL;// false 从第11位开始查找</span><br><span class="line">echo strrpos($str, &apos;D&apos;,-5);// 4 从尾部第5位开始查找</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/18/php-str/" data-id="cjy8jhjxr0004jk65nebmn1yj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-linux" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/29/linux/" class="article-date">
@@ -89,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/linux/" data-id="cjxx0etbv0003sd6533iokl98" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/linux/" data-id="cjy8jhjxk0001jk652nvoqjyx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -125,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/redis/" data-id="cjxx0etcc0005sd65bb3sznyb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/redis/" data-id="cjy8jhjxu0006jk65cwt3mg2k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/convert/" data-id="cjxx0etbi0001sd65jgevrs98" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/24/convert/" data-id="cjy8jhjxq0003jk65dzolugfj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/php-datetime/" data-id="cjxx0etbu0002sd65yk9tt7b0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/16/php-datetime/" data-id="cjy8jhjxo0002jk65t0olv7jz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -242,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/operation/" data-id="cjxx0etcb0004sd652j8qjbc9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/10/operation/" data-id="cjy8jhjxs0005jk65llgcdjvr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/hello-world/" data-id="cjxx0etba0000sd65tt2ha8dr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/10/hello-world/" data-id="cjy8jhjxd0000jk65w54sam5u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -315,7 +354,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -326,6 +365,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/07/18/php-str/">php-str字符串处理</a>
+          </li>
         
           <li>
             <a href="/2019/05/29/linux/">linux 命令使用</a>
@@ -341,10 +384,6 @@
         
           <li>
             <a href="/2019/05/16/php-datetime/">php 常见问题处理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/10/operation/">ES5.6使用</a>
           </li>
         
       </ul>

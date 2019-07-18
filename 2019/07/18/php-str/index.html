@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>php-str字符串处理 | HuangTeng VS Victor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="PHP字符常用函数 substr、strrpos、strpos、strrchr，strstr使用记录substr函数 ***string substr ( string $string , int $start [, int $length ] )返回字符串 string 由 start 和 length 参数指定的子字符串。*** 12345678&amp;lt;?php$str = &amp;apos;ABC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php-str字符串处理">
+<meta property="og:url" content="http://yoursite.com/2019/07/18/php-str/index.html">
+<meta property="og:site_name" content="HuangTeng VS Victor">
+<meta property="og:description" content="PHP字符常用函数 substr、strrpos、strpos、strrchr，strstr使用记录substr函数 ***string substr ( string $string , int $start [, int $length ] )返回字符串 string 由 start 和 length 参数指定的子字符串。*** 12345678&amp;lt;?php$str = &amp;apos;ABC">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-18T10:36:00.806Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php-str字符串处理">
+<meta name="twitter:description" content="PHP字符常用函数 substr、strrpos、strpos、strrchr，strstr使用记录substr函数 ***string substr ( string $string , int $start [, int $length ] )返回字符串 string 由 start 和 length 参数指定的子字符串。*** 12345678&amp;lt;?php$str = &amp;apos;ABC">
+  
+    <link rel="alternate" href="/atom.xml" title="HuangTeng VS Victor" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">HuangTeng VS Victor</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-php-str" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/18/php-str/" class="article-date">
+  <time datetime="2019-07-18T10:21:42.000Z" itemprop="datePublished">2019-07-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      php-str字符串处理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="PHP字符常用函数-substr、strrpos、strpos、strrchr，strstr使用记录"><a href="#PHP字符常用函数-substr、strrpos、strpos、strrchr，strstr使用记录" class="headerlink" title="PHP字符常用函数 substr、strrpos、strpos、strrchr，strstr使用记录"></a>PHP字符常用函数 substr、strrpos、strpos、strrchr，strstr使用记录</h2><h3 id="substr函数-string-substr-string-string-int-start-int-length"><a href="#substr函数-string-substr-string-string-int-start-int-length" class="headerlink" title="substr函数 ***string substr ( string $string , int $start [, int $length ] )"></a>substr函数 ***string substr ( string $string , int $start [, int $length ] )</h3><pre><code>返回字符串 string 由 start 和 length 参数指定的子字符串。***
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$str = &apos;ABCDEFABCDE&apos;;</span><br><span class="line">echo substr($str, 0, 5) . PHP_EOL;// ABCDE从首部开始截取5位</span><br><span class="line">echo substr($str, 0, -3) . PHP_EOL;// ABCDEFABCDE 从首部开始截取-3位</span><br><span class="line">echo substr($str, -3) . PHP_EOL;// CDE 从尾部开始截取3位</span><br><span class="line">echo substr($str, -5, 2) . PHP_EOL;// AB 从尾部第5位开始截取2位</span><br><span class="line">echo substr($str, -3, -1) . PHP_EOL;// CD 从尾部第3位开始截取-1位</span><br></pre></td></tr></table></figure>
+<h3 id="strrpos-函数-int-strrpos-string-haystack-string-needle-int-offset-0"><a href="#strrpos-函数-int-strrpos-string-haystack-string-needle-int-offset-0" class="headerlink" title="strrpos 函数 ***int strrpos ( string $haystack , string $needle [, int $offset = 0 ] )"></a>strrpos 函数 ***int strrpos ( string $haystack , string $needle [, int $offset = 0 ] )</h3><pre><code>返回字符串 haystack 中 needle 最后一次出现的数字位置。***
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$str = &apos;ABCDEFABCDE&apos;;</span><br><span class="line">echo strrpos($str, &apos;D&apos;) . PHP_EOL;// 9 字符串位置是从0开始</span><br><span class="line">echo strrpos($str, &apos;D&apos;, 4) . PHP_EOL;// 10 从第4位开始查找</span><br><span class="line">echo strrpos($str, &apos;D&apos;, 11) . PHP_EOL;// false 从第11位开始查找</span><br><span class="line">echo strrpos($str, &apos;D&apos;,-5);// 4 从尾部第5位开始查找</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/18/php-str/" data-id="cjy8jhjxr0004jk65nebmn1yj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/29/linux/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">linux 命令使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/18/php-str/">php-str字符串处理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/29/linux/">linux 命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/29/redis/">redis 命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/24/convert/">mac convert命令pdf转图片问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/16/php-datetime/">php 常见问题处理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 victor<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
