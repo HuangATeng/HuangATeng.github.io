@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="HuangTeng VS Victor">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="https://huangateng.github.io/index.html">
 <meta property="og:site_name" content="HuangTeng VS Victor">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -54,13 +54,63 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://huangateng.github.io"></form>
       </div>
     </div>
   </div>
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-mac-mamp-pcntl" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/23/mac-mamp-pcntl/" class="article-date">
+  <time datetime="2019-08-23T06:02:00.000Z" itemprop="datePublished">2019-08-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/23/mac-mamp-pcntl/">MAC MAMP环境PHP添加pcntl扩展</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="pcntl-扩展可以支持-PHP-的多线程操作。（非Unix类系统不支持此模块）"><a href="#pcntl-扩展可以支持-PHP-的多线程操作。（非Unix类系统不支持此模块）" class="headerlink" title="pcntl 扩展可以支持 PHP 的多线程操作。（非Unix类系统不支持此模块）"></a><strong><em><font color="red">pcntl 扩展可以支持 PHP 的多线程操作。（非Unix类系统不支持此模块）</font></em></strong></h4><h3 id="首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下："><a href="#首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下：" class="headerlink" title="首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下："></a>首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下：</h3><ol>
+<li><p>打开terminal终端 sudo vim ~/.bash_profile 打开或新建该文件后在文件末尾添加如下信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;/Applications/MAMP/bin/php/php5.6.32/bin:$PATH&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存 执行source ~/.bash_profile后php -v查看php版本是否切换成功</p>
+</li>
+</ol>
+<h3 id="下面演示的是给-MAMP的PHP-6-32版本添加-pcntl扩展。"><a href="#下面演示的是给-MAMP的PHP-6-32版本添加-pcntl扩展。" class="headerlink" title="下面演示的是给 MAMP的PHP.6.32版本添加 pcntl扩展。"></a>下面演示的是给 MAMP的PHP.6.32版本添加 pcntl扩展。</h3><p>官网下载和本地 mamp中PHP版本对应的源码包，<a href="https://www.php.net/releases" target="_blank" rel="noopener">php官网源码</a></p>
+<h4 id="1-解压源码包"><a href="#1-解压源码包" class="headerlink" title="1. 解压源码包"></a>1. 解压源码包</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf php-5.6.32.tar.gz</span><br><span class="line"><span class="built_in">cd</span> php-5.6.32/ext/pcntl</span><br></pre></td></tr></table></figure>
+<h4 id="2-编译-pcntl-so-文件"><a href="#2-编译-pcntl-so-文件" class="headerlink" title="2. 编译 pcntl.so 文件"></a>2. 编译 pcntl.so 文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/Applications/MAMP/bin/php/php5.6.32/bin/phpize</span><br><span class="line"><span class="comment">#将编译出来的扩展文件pcntl.so 放置php的扩展目录</span></span><br><span class="line">./configure --prefix=/Applications/MAMP/bin/php/php5.6.32/bin/php</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p><strong><em><font color="red">在编译pcntl.so之前文件网上还有说添加以下零时环境变量（本机安装测试时添加以下环境变量编译报错无法正常生成pcntl.so扩展）</font></em></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">添加一些标志来告诉系统怎样编译。MAMP PHP已经建成这样，如果不这样做，编译的共享对象将无法工作</span><br><span class="line">$ MACOSX_DEPLOYMENT_TARGET=10.14</span><br><span class="line">$ CFLAGS=&quot;-arch i386 -arch x86_64 -g -Os -pipe -no-cpp-precomp&quot;$ CCFLAGS=&quot;-arch i386 -arch x86_64 -g -Os -pipe&quot;</span><br><span class="line">$ CXXFLAGS=&quot;-arch i386 -arch x86_64 -g -Os -pipe&quot;</span><br><span class="line">$ LDFLAGS=&quot;-arch i386 -arch x86_64 -bind_at_load&quot;</span><br><span class="line">$ export CFLAGS CXXFLAGS LDFLAGS CCFLAGS MACOSX_DEPLOYMENT_TARGET</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-向php-ini文件中添加该扩展-重启apache"><a href="#3-向php-ini文件中添加该扩展-重启apache" class="headerlink" title="3. 向php.ini文件中添加该扩展 重启apache"></a>3. 向php.ini文件中添加该扩展 重启apache</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;extension=pcntl.so&quot; &gt;&gt; /Applications/MAMP/bin/php/php5.6.32/conf/php.ini</span><br></pre></td></tr></table></figure>
+<p><strong><em><font color="red">注:关于向php.ini文件中添加extension=pcntl.so扩展网上有说MAMP PRO &gt; file &gt; edit template &gt; PHP(php.ini) &gt; php5.6.32打开ini文件添加的方式本机测试此方法无效<br></font></em></strong></p>
+<h4 id="4-pcntl现在应该已经启用，要检查是否安装成功"><a href="#4-pcntl现在应该已经启用，要检查是否安装成功" class="headerlink" title="4. pcntl现在应该已经启用，要检查是否安装成功:"></a>4. pcntl现在应该已经启用，要检查是否安装成功:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">php --ri pcntl</span><br><span class="line">#出现以下信息说明安装成功</span><br><span class="line">pcntl</span><br><span class="line">pcntl support =&gt; enabled</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangateng.github.io/2019/08/23/mac-mamp-pcntl/" data-id="cjznpko2w0002gz65y17z710m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-php-str" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -98,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/18/php-str/" data-id="cjz9afol10004uc65w2svgy51" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/07/18/php-str/" data-id="cjznpko300005gz65nc2upcpa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -135,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/linux/" data-id="cjz9afokw0001uc65zs0l5mzm" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/05/29/linux/" data-id="cjznpko2s0001gz65rviwufn5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/redis/" data-id="cjz9afol20005uc65vovkjrn9" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/05/29/redis/" data-id="cjznpko310006gz65s9h5wni3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/24/convert/" data-id="cjz9afokp0000uc650u3qtlay" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/05/24/convert/" data-id="cjznpko2m0000gz65svwf8sve" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/php-datetime/" data-id="cjz9afokz0002uc65g46ulvtm" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/05/16/php-datetime/" data-id="cjznpko2z0004gz65m3s4pd8j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/10/operation/" data-id="cjz9afol00003uc65zonn34am" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/05/10/operation/" data-id="cjznpko2x0003gz65xo4m6ns1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +366,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -327,6 +377,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/08/23/mac-mamp-pcntl/">MAC MAMP环境PHP添加pcntl扩展</a>
+          </li>
         
           <li>
             <a href="/2019/07/18/php-str/">php 字符串处理函数</a>
@@ -342,10 +396,6 @@
         
           <li>
             <a href="/2019/05/24/convert/">mac convert命令pdf转图片问题</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/16/php-datetime/">php 常见问题处理</a>
           </li>
         
       </ul>

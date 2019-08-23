@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>MAC MAMP环境PHP添加pcntl扩展 | HuangTeng VS Victor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="pcntl 扩展可以支持 PHP 的多线程操作。（非Unix类系统不支持此模块）首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下： 打开terminal终端 sudo vim ~/.bash_profile 打开或新建该文件后在文件末尾添加如下信息 1export PATH=&amp;quot;/Applications/MAMP/bin/php/php5.6.32/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MAC MAMP环境PHP添加pcntl扩展">
+<meta property="og:url" content="https://huangateng.github.io/2019/08/23/mac-mamp-pcntl/index.html">
+<meta property="og:site_name" content="HuangTeng VS Victor">
+<meta property="og:description" content="pcntl 扩展可以支持 PHP 的多线程操作。（非Unix类系统不支持此模块）首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下： 打开terminal终端 sudo vim ~/.bash_profile 打开或新建该文件后在文件末尾添加如下信息 1export PATH=&amp;quot;/Applications/MAMP/bin/php/php5.6.32/">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-23T07:16:16.741Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MAC MAMP环境PHP添加pcntl扩展">
+<meta name="twitter:description" content="pcntl 扩展可以支持 PHP 的多线程操作。（非Unix类系统不支持此模块）首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下： 打开terminal终端 sudo vim ~/.bash_profile 打开或新建该文件后在文件末尾添加如下信息 1export PATH=&amp;quot;/Applications/MAMP/bin/php/php5.6.32/">
+  
+    <link rel="alternate" href="/atom.xml" title="HuangTeng VS Victor" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">HuangTeng VS Victor</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://huangateng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mac-mamp-pcntl" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/23/mac-mamp-pcntl/" class="article-date">
+  <time datetime="2019-08-23T06:02:00.000Z" itemprop="datePublished">2019-08-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MAC MAMP环境PHP添加pcntl扩展
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="pcntl-扩展可以支持-PHP-的多线程操作。（非Unix类系统不支持此模块）"><a href="#pcntl-扩展可以支持-PHP-的多线程操作。（非Unix类系统不支持此模块）" class="headerlink" title="pcntl 扩展可以支持 PHP 的多线程操作。（非Unix类系统不支持此模块）"></a><strong><em><font color="red">pcntl 扩展可以支持 PHP 的多线程操作。（非Unix类系统不支持此模块）</font></em></strong></h4><h3 id="首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下："><a href="#首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下：" class="headerlink" title="首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下："></a>首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下：</h3><ol>
+<li><p>打开terminal终端 sudo vim ~/.bash_profile 打开或新建该文件后在文件末尾添加如下信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;/Applications/MAMP/bin/php/php5.6.32/bin:$PATH&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存 执行source ~/.bash_profile后php -v查看php版本是否切换成功</p>
+</li>
+</ol>
+<h3 id="下面演示的是给-MAMP的PHP-6-32版本添加-pcntl扩展。"><a href="#下面演示的是给-MAMP的PHP-6-32版本添加-pcntl扩展。" class="headerlink" title="下面演示的是给 MAMP的PHP.6.32版本添加 pcntl扩展。"></a>下面演示的是给 MAMP的PHP.6.32版本添加 pcntl扩展。</h3><p>官网下载和本地 mamp中PHP版本对应的源码包，<a href="https://www.php.net/releases" target="_blank" rel="noopener">php官网源码</a></p>
+<h4 id="1-解压源码包"><a href="#1-解压源码包" class="headerlink" title="1. 解压源码包"></a>1. 解压源码包</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf php-5.6.32.tar.gz</span><br><span class="line"><span class="built_in">cd</span> php-5.6.32/ext/pcntl</span><br></pre></td></tr></table></figure>
+<h4 id="2-编译-pcntl-so-文件"><a href="#2-编译-pcntl-so-文件" class="headerlink" title="2. 编译 pcntl.so 文件"></a>2. 编译 pcntl.so 文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/Applications/MAMP/bin/php/php5.6.32/bin/phpize</span><br><span class="line"><span class="comment">#将编译出来的扩展文件pcntl.so 放置php的扩展目录</span></span><br><span class="line">./configure --prefix=/Applications/MAMP/bin/php/php5.6.32/bin/php</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p><strong><em><font color="red">在编译pcntl.so之前文件网上还有说添加以下零时环境变量（本机安装测试时添加以下环境变量编译报错无法正常生成pcntl.so扩展）</font></em></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">添加一些标志来告诉系统怎样编译。MAMP PHP已经建成这样，如果不这样做，编译的共享对象将无法工作</span><br><span class="line">$ MACOSX_DEPLOYMENT_TARGET=10.14</span><br><span class="line">$ CFLAGS=&quot;-arch i386 -arch x86_64 -g -Os -pipe -no-cpp-precomp&quot;$ CCFLAGS=&quot;-arch i386 -arch x86_64 -g -Os -pipe&quot;</span><br><span class="line">$ CXXFLAGS=&quot;-arch i386 -arch x86_64 -g -Os -pipe&quot;</span><br><span class="line">$ LDFLAGS=&quot;-arch i386 -arch x86_64 -bind_at_load&quot;</span><br><span class="line">$ export CFLAGS CXXFLAGS LDFLAGS CCFLAGS MACOSX_DEPLOYMENT_TARGET</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-向php-ini文件中添加该扩展-重启apache"><a href="#3-向php-ini文件中添加该扩展-重启apache" class="headerlink" title="3. 向php.ini文件中添加该扩展 重启apache"></a>3. 向php.ini文件中添加该扩展 重启apache</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;extension=pcntl.so&quot; &gt;&gt; /Applications/MAMP/bin/php/php5.6.32/conf/php.ini</span><br></pre></td></tr></table></figure>
+<p><strong><em><font color="red">注:关于向php.ini文件中添加extension=pcntl.so扩展网上有说MAMP PRO &gt; file &gt; edit template &gt; PHP(php.ini) &gt; php5.6.32打开ini文件添加的方式本机测试此方法无效<br></font></em></strong></p>
+<h4 id="4-pcntl现在应该已经启用，要检查是否安装成功"><a href="#4-pcntl现在应该已经启用，要检查是否安装成功" class="headerlink" title="4. pcntl现在应该已经启用，要检查是否安装成功:"></a>4. pcntl现在应该已经启用，要检查是否安装成功:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">php --ri pcntl</span><br><span class="line">#出现以下信息说明安装成功</span><br><span class="line">pcntl</span><br><span class="line">pcntl support =&gt; enabled</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangateng.github.io/2019/08/23/mac-mamp-pcntl/" data-id="cjznpko2w0002gz65y17z710m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/18/php-str/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">php 字符串处理函数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/23/mac-mamp-pcntl/">MAC MAMP环境PHP添加pcntl扩展</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/18/php-str/">php 字符串处理函数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/29/linux/">linux 命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/29/redis/">redis 命令使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/24/convert/">mac convert命令pdf转图片问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 victor<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
