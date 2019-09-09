@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="HuangTeng VS Victor">
 <meta property="og:description" content="pcntl 扩展可以支持 PHP 的多线程操作。（非Unix类系统不支持此模块）首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下： 打开terminal终端 sudo vim ~/.bash_profile 打开或新建该文件后在文件末尾添加如下信息 1export PATH=&amp;quot;/Applications/MAMP/bin/php/php5.6.32/">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-23T07:16:16.741Z">
+<meta property="og:updated_time" content="2019-09-09T07:42:24.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MAC MAMP环境PHP添加pcntl扩展">
 <meta name="twitter:description" content="pcntl 扩展可以支持 PHP 的多线程操作。（非Unix类系统不支持此模块）首先将mac上的默认php修改为MAMP中的php版本也就是不使用mac自带的步骤如下： 打开terminal终端 sudo vim ~/.bash_profile 打开或新建该文件后在文件末尾添加如下信息 1export PATH=&amp;quot;/Applications/MAMP/bin/php/php5.6.32/">
@@ -93,7 +93,7 @@
 <li><p>保存 执行source ~/.bash_profile后php -v查看php版本是否切换成功</p>
 </li>
 </ol>
-<h3 id="下面演示的是给-MAMP的PHP-6-32版本添加-pcntl扩展。"><a href="#下面演示的是给-MAMP的PHP-6-32版本添加-pcntl扩展。" class="headerlink" title="下面演示的是给 MAMP的PHP.6.32版本添加 pcntl扩展。"></a>下面演示的是给 MAMP的PHP.6.32版本添加 pcntl扩展。</h3><p>官网下载和本地 mamp中PHP版本对应的源码包，<a href="https://www.php.net/releases" target="_blank" rel="noopener">php官网源码</a></p>
+<h3 id="下面演示的是给-MAMP的PHP5-6-32版本添加-pcntl扩展。"><a href="#下面演示的是给-MAMP的PHP5-6-32版本添加-pcntl扩展。" class="headerlink" title="下面演示的是给 MAMP的PHP5.6.32版本添加 pcntl扩展。"></a>下面演示的是给 MAMP的PHP5.6.32版本添加 pcntl扩展。</h3><p>官网下载和本地 mamp中PHP版本对应的源码包，<a href="https://www.php.net/releases" target="_blank" rel="noopener">php官网源码</a></p>
 <h4 id="1-解压源码包"><a href="#1-解压源码包" class="headerlink" title="1. 解压源码包"></a>1. 解压源码包</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf php-5.6.32.tar.gz</span><br><span class="line"><span class="built_in">cd</span> php-5.6.32/ext/pcntl</span><br></pre></td></tr></table></figure>
 <h4 id="2-编译-pcntl-so-文件"><a href="#2-编译-pcntl-so-文件" class="headerlink" title="2. 编译 pcntl.so 文件"></a>2. 编译 pcntl.so 文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/Applications/MAMP/bin/php/php5.6.32/bin/phpize</span><br><span class="line"><span class="comment">#将编译出来的扩展文件pcntl.so 放置php的扩展目录</span></span><br><span class="line">./configure --prefix=/Applications/MAMP/bin/php/php5.6.32/bin/php</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
 <p><strong><em><font color="red">在编译pcntl.so之前文件网上还有说添加以下零时环境变量（本机安装测试时添加以下环境变量编译报错无法正常生成pcntl.so扩展）</font></em></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">添加一些标志来告诉系统怎样编译。MAMP PHP已经建成这样，如果不这样做，编译的共享对象将无法工作</span><br><span class="line">$ MACOSX_DEPLOYMENT_TARGET=10.14</span><br><span class="line">$ CFLAGS=&quot;-arch i386 -arch x86_64 -g -Os -pipe -no-cpp-precomp&quot;$ CCFLAGS=&quot;-arch i386 -arch x86_64 -g -Os -pipe&quot;</span><br><span class="line">$ CXXFLAGS=&quot;-arch i386 -arch x86_64 -g -Os -pipe&quot;</span><br><span class="line">$ LDFLAGS=&quot;-arch i386 -arch x86_64 -bind_at_load&quot;</span><br><span class="line">$ export CFLAGS CXXFLAGS LDFLAGS CCFLAGS MACOSX_DEPLOYMENT_TARGET</span><br></pre></td></tr></table></figure></p>
@@ -104,7 +104,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangateng.github.io/2019/08/23/mac-mamp-pcntl/" data-id="cjznpko2w0002gz65y17z710m" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/08/23/mac-mamp-pcntl/" data-id="ck0c3msoz00014465xen5rims" class="article-share-link">Share</a>
       
       
     </footer>
