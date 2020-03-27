@@ -62,6 +62,115 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mongo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/27/mongo/" class="article-date">
+  <time datetime="2020-03-27T02:50:54.000Z" itemprop="datePublished">2020-03-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/27/mongo/">mongo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Monogo连表查询"><a href="#Monogo连表查询" class="headerlink" title="Monogo连表查询"></a>Monogo连表查询</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">db.getCollection(<span class="string">'DB_WishVariation_Online'</span>).aggregate([</span><br><span class="line">   	&#123;</span><br><span class="line">   		$project:&#123; </span><br><span class="line">   			subject:<span class="number">1</span>,<span class="attr">vSku</span>:<span class="number">1</span>,<span class="attr">shopId</span>:<span class="number">1</span>,<span class="attr">variationId</span>:<span class="number">1</span>,<span class="attr">vPrice</span>:<span class="number">1</span>,<span class="attr">vQuantity</span>:<span class="number">1</span>,<span class="attr">color</span>:<span class="number">1</span>,<span class="attr">size</span>:<span class="number">1</span>,<span class="attr">mainImage</span>:<span class="number">1</span>,<span class="attr">stockSku</span>:<span class="number">1</span>,<span class="attr">stockType</span>:<span class="number">1</span>,<span class="attr">companyId</span>:<span class="number">1</span>,<span class="attr">productId</span>:<span class="number">1</span></span><br><span class="line">   		&#125;,</span><br><span class="line">   	&#125;,</span><br><span class="line">   	&#123;</span><br><span class="line">        $lookup:</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">from</span>: <span class="string">"DB_Wish_Online"</span>,</span><br><span class="line">            <span class="keyword">let</span>:&#123;<span class="attr">onlineCompanyId</span>:<span class="string">"$companyId"</span>,<span class="attr">onlineProductId</span>:<span class="string">"$productId"</span>&#125;,</span><br><span class="line">            pipeline:[</span><br><span class="line">              &#123;</span><br><span class="line">                $match:&#123;</span><br><span class="line">                  $expr:&#123;</span><br><span class="line">                    &#123; <span class="attr">$eq</span>: [ <span class="string">"$companyId"</span>,  <span class="string">"$$onlineCompanyId"</span> ] &#125;,</span><br><span class="line">                    &#123; <span class="attr">$eq</span>: [ <span class="string">"$productId"</span>,  <span class="string">"$$onlineCompanyId"</span> ] &#125;,</span><br><span class="line">                  &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123; <span class="attr">$project</span>: &#123; <span class="attr">subject</span>: <span class="number">1</span>, <span class="attr">mainPic</span>: <span class="number">1</span> &#125; &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            ]</span><br><span class="line">            <span class="comment">// localField: "companyId",</span></span><br><span class="line">            <span class="comment">// foreignField: "companyId",</span></span><br><span class="line">            <span class="keyword">as</span>: <span class="string">"product"</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   &#123; <span class="attr">$unwind</span>: <span class="string">'$product'</span>&#125;,</span><br><span class="line">   &#123; <span class="attr">$match</span>: &#123;<span class="string">"companyId"</span>:<span class="number">135082</span>&#125;&#125;,</span><br><span class="line">   &#123; <span class="attr">$match</span>: &#123;<span class="string">'shopId'</span>:&#123;<span class="attr">$in</span>:[<span class="number">59398169</span>]&#125;&#125;&#125;,</span><br><span class="line">   &#123; <span class="attr">$match</span>: &#123;<span class="attr">$or</span>:[&#123;<span class="string">"vSku"</span>:&#123;<span class="attr">$regex</span>:<span class="regexp">/FXYQ2711_black_S/i</span>&#125;&#125;,&#123;<span class="string">'product.sku'</span>:&#123;<span class="attr">$regex</span>:<span class="regexp">/FXYQ2711_black_S/i</span>&#125;&#125;]&#125;&#125;,</span><br><span class="line">   &#123; <span class="attr">$match</span>: &#123;<span class="string">"product.status"</span>:<span class="number">2</span>&#125;&#125;,</span><br><span class="line">   &#123; <span class="attr">$match</span>: &#123;<span class="string">"product"</span>: &#123; <span class="attr">$ne</span>: [] &#125; &#125;&#125;,</span><br><span class="line">   &#123; <span class="attr">$skip</span>: <span class="number">0</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">$limit</span>: <span class="number">100</span>&#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangateng.github.io/2020/03/27/mongo/" data-id="ck89lbwtg0004ix656xnbh1z2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mac-vpn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/08/mac-vpn/" class="article-date">
+  <time datetime="2020-02-08T07:41:48.000Z" itemprop="datePublished">2020-02-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/08/mac-vpn/">mac-vpn</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mac系统缺莫名其妙连接不上问题解决方法"><a href="#Mac系统缺莫名其妙连接不上问题解决方法" class="headerlink" title="Mac系统缺莫名其妙连接不上问题解决方法"></a>Mac系统缺莫名其妙连接不上问题解决方法</h1><h3 id="使用sudo管理员权限在-etc-ppp目录创建options文件。"><a href="#使用sudo管理员权限在-etc-ppp目录创建options文件。" class="headerlink" title="使用sudo管理员权限在/etc/ppp目录创建options文件。"></a>使用sudo管理员权限在/etc/ppp目录创建options文件。</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 你要的命令</span></span><br><span class="line"><span class="built_in">cd</span> /etc/ppp</span><br><span class="line">sudo vi options</span><br><span class="line"><span class="comment"># 请输入你的密码</span></span><br></pre></td></tr></table></figure>
+<h3 id="options文件配置"><a href="#options文件配置" class="headerlink" title="options文件配置"></a>options文件配置</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plugin L2TP.ppp</span><br><span class="line">l2tpnoipsec</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangateng.github.io/2020/02/08/mac-vpn/" data-id="ck89lbwte0003ix65anwu45wy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-img" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/28/php-img/" class="article-date">
+  <time datetime="2019-12-28T06:15:31.000Z" itemprop="datePublished">2019-12-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/28/php-img/">php-img 代码片段</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="base64格式的图片字符和图片文件相互转换"><a href="#base64格式的图片字符和图片文件相互转换" class="headerlink" title="base64格式的图片字符和图片文件相互转换"></a>base64格式的图片字符和图片文件相互转换</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> $base64Stream  base64格式的图片字符串数据</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> $path   保存的文件路径和文件名(不用带扩展名 自动匹配)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">base64ToImage</span><span class="params">($base64Stream,$path)</span></span>&#123;</span><br><span class="line">	$streamList = explode(<span class="string">','</span>,$base64Stream);</span><br><span class="line">	$bin = base64_decode($streamList[<span class="number">1</span>]);</span><br><span class="line">	$extension = <span class="keyword">$this</span>-&gt;getImgExt($bin);<span class="comment">//获取真实扩展名</span></span><br><span class="line">	<span class="keyword">if</span>($ext !== <span class="keyword">false</span>)&#123;</span><br><span class="line">		file_put_contents($path . <span class="string">'.'</span> . $extension, $bin);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">exit</span>(<span class="string">'图片格式非法'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	图片文件转base64格式的图片字符串</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> $imgfile 图片路径和文件名</span></span><br><span class="line"><span class="comment">	return 图片字符串</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">imgToBase64</span><span class="params">($imgfile)</span></span>&#123;</span><br><span class="line">	$imgInfo = getimagesize($imgfile);</span><br><span class="line">	$imgBase64Src = <span class="string">"data:&#123;$imgInfo['mime']&#125;;base64,"</span> . base64_encode(file_get_contents($imgfile));</span><br><span class="line">	<span class="keyword">return</span> $imgBase64Src;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">	获取图片扩展名</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> $stream 二进制图片数据流</span></span><br><span class="line"><span class="comment">	return 图片扩展名</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getImageExtension</span><span class="params">($stream)</span></span>&#123;</span><br><span class="line">	$bitArray = [</span><br><span class="line">		<span class="string">'png'</span> =&gt; <span class="string">"\x89\x50\x4e\x47\x0d\x0a\x1a\x0a"</span>,</span><br><span class="line">		<span class="string">'jpg'</span> =&gt; <span class="string">"\xFF\xD8\xFF"</span>,</span><br><span class="line">		<span class="string">'gif'</span> =&gt; <span class="string">"GIF"</span>,</span><br><span class="line">		<span class="string">'bmp'</span> =&gt; <span class="string">'BM'</span>,</span><br><span class="line">	];</span><br><span class="line">	<span class="keyword">foreach</span> ($bitArray <span class="keyword">as</span> $imgExtension =&gt; $bit) &#123;</span><br><span class="line">		<span class="keyword">if</span> (substr($stream, <span class="number">0</span>, strlen($bit)) === $bit) &#123;</span><br><span class="line">			<span class="keyword">return</span> $imgExtension;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangateng.github.io/2019/12/28/php-img/" data-id="ck89lbwtk0008ix65i91kt1s0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mysql" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/13/mysql/" class="article-date">
@@ -88,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangateng.github.io/2019/11/13/mysql/" data-id="ck2xap9060000a565bi7c0bjd" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/11/13/mysql/" data-id="ck89lbwth0005ix65spfe2r12" class="article-share-link">Share</a>
       
       
     </footer>
@@ -138,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangateng.github.io/2019/08/23/mac-mamp-pcntl/" data-id="ck2xap90d0001a565g8ge02oc" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/08/23/mac-mamp-pcntl/" data-id="ck89lbwtb0001ix657e11ly6p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -184,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangateng.github.io/2019/07/18/php-str/" data-id="ck2xap90n0007a565ln4qckqa" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/07/18/php-str/" data-id="ck89lbwtm0009ix65pp8umdbo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,12 +325,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="linux删除文件解决Argument-list-too-long参数列表过长的办法"><a href="#linux删除文件解决Argument-list-too-long参数列表过长的办法" class="headerlink" title="linux删除文件解决Argument list too long参数列表过长的办法"></a>linux删除文件解决Argument list too long参数列表过长的办法</h3><p><code>rm -f *.log 命令改为 ls | xargs rm -f</code></p>
-
+        <h3 id="linux删除文件解决Argument-list-too-long参数列表过长的办法"><a href="#linux删除文件解决Argument-list-too-long参数列表过长的办法" class="headerlink" title="linux删除文件解决Argument list too long参数列表过长的办法"></a>linux删除文件解决Argument list too long参数列表过长的办法</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -f *.<span class="built_in">log</span> 命令改为 ls | xargs rm -f</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangateng.github.io/2019/05/29/linux/" data-id="ck2xap90f0002a565unks7z4a" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/05/29/linux/" data-id="ck89lbwtd0002ix65ehaxi3sm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangateng.github.io/2019/05/29/redis/" data-id="ck2xap90l0006a565bqvp90cd" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/05/29/redis/" data-id="ck89lbwtn000aix656ym806oz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -296,7 +404,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangateng.github.io/2019/05/24/convert/" data-id="ck2xap90i0004a565okqqus7j" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/05/24/convert/" data-id="ck89lbwt00000ix65faqwjt7m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -328,53 +436,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的-strtotime-函数只能适用于英文日期-查找PHP手册找到-date-create-from-format-函数date-create-from-format-其原型–为-DateTime-createFromFormat-根据给定的格式解析日期时间字符串"><a href="#工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的-strtotime-函数只能适用于英文日期-查找PHP手册找到-date-create-from-format-函数date-create-from-format-其原型–为-DateTime-createFromFormat-根据给定的格式解析日期时间字符串" class="headerlink" title="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的  strtotime()  函数只能适用于英文日期,查找PHP手册找到  date_create_from_format 函数date_create_from_format() 其原型–为 DateTime::createFromFormat() 根据给定的格式解析日期时间字符串 "></a><strong><em>工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的 <font color="red"> strtotime() </font> 函数只能适用于英文日期,查找PHP手册找到 <font color="red"> date_create_from_format</font> 函数<font color="red">date_create_from_format()</font> 其原型–为 <font color="red">DateTime::createFromFormat()</font> 根据给定的格式解析日期时间字符串 </em></strong></h3><h4 id="示例-1-j-n-y-H-i-s时间转为Y-m-d-H-i-s格式"><a href="#示例-1-j-n-y-H-i-s时间转为Y-m-d-H-i-s格式" class="headerlink" title="示例 1  j.n.y H:i:s时间转为Y-m-d H:i:s格式"></a>示例 1  <strong><em><font color="grey">j.n.y H:i:s时间转为Y-m-d H:i:s格式</font></em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date_create_from_format(&apos;j.n.y H:i:s&apos;, &quot;05.04.19 19:07:39&quot;)-&gt;format(&apos;Y-m-d H:i:s&apos;)</span><br><span class="line">输出:2019-04-05 19:07:39</span><br></pre></td></tr></table></figure>
-<h4 id="示例-2-j-n-y-H-i-s时间转为Ymd格式"><a href="#示例-2-j-n-y-H-i-s时间转为Ymd格式" class="headerlink" title="示例 2  j.n.y H:i:s时间转为Ymd格式"></a>示例 2  <strong><em><font color="grey">j.n.y H:i:s时间转为Ymd格式</font></em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date_create_from_format(&apos;j.n.y H:i:s&apos;, &quot;05.04.19 19:07:39&quot;)-&gt;format(&apos;Ymd&apos;)</span><br><span class="line">输出:20190405</span><br></pre></td></tr></table></figure>
-<h3 id="php正则匹配script标签中的内容-一般使用-，但是一些html存在换行符此表达式不生效–使用”-s-S-”替代"><a href="#php正则匹配script标签中的内容-一般使用-，但是一些html存在换行符此表达式不生效–使用”-s-S-”替代" class="headerlink" title="php正则匹配script标签中的内容(一般使用(.*?)，但是一些html存在换行符此表达式不生效–使用”([\s\S]+?)”替代)"></a>php正则匹配script标签中的内容(一般使用(.*?)，但是一些html存在换行符此表达式不生效–使用”([\s\S]+?)”替代)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">preg_match(&apos;/(?&lt;=&lt;script.*?&gt;)([\s\S]+?)(?=&lt;\/script&gt;)/&apos;,$contents,$match);</span><br></pre></td></tr></table></figure>
+        <h3 id="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的-strtotime-函数只能适用于英文日期-查找PHP手册找到-date-create-from-format-函数date-create-from-format-其原型–为-DateTime-createFromFormat-根据给定的格式解析日期时间字符串"><a href="#工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的-strtotime-函数只能适用于英文日期-查找PHP手册找到-date-create-from-format-函数date-create-from-format-其原型–为-DateTime-createFromFormat-根据给定的格式解析日期时间字符串" class="headerlink" title="工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的  strtotime()  函数只能适用于英文日期,查找PHP手册找到  date_create_from_format 函数date_create_from_format() 其原型–为 DateTime::createFromFormat() 根据给定的格式解析日期时间字符串 "></a><strong><em>工作中遇到需要将欧洲时间转为Y-m-d日期，但是常用的 <font color="red"> strtotime() </font> 函数只能适用于英文日期,查找PHP手册找到 <font color="red"> date_create_from_format</font> 函数<font color="red">date_create_from_format()</font> 其原型–为 <font color="red">DateTime::createFromFormat()</font> 根据给定的格式解析日期时间字符串 </em></strong></h3><h4 id="示例-1-j-n-y-H-i-s时间转为Y-m-d-H-i-s格式"><a href="#示例-1-j-n-y-H-i-s时间转为Y-m-d-H-i-s格式" class="headerlink" title="示例 1  j.n.y H:i:s时间转为Y-m-d H:i:s格式"></a>示例 1  <strong><em><font color="grey">j.n.y H:i:s时间转为Y-m-d H:i:s格式</font></em></strong></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date_create_from_format(<span class="string">'j.n.y H:i:s'</span>, <span class="string">"05.04.19 19:07:39"</span>)-&gt;format(<span class="string">'Y-m-d H:i:s'</span>)</span><br><span class="line">输出:<span class="number">2019</span><span class="number">-04</span><span class="number">-05</span> <span class="number">19</span>:<span class="number">07</span>:<span class="number">39</span></span><br></pre></td></tr></table></figure>
+<h4 id="示例-2-j-n-y-H-i-s时间转为Ymd格式"><a href="#示例-2-j-n-y-H-i-s时间转为Ymd格式" class="headerlink" title="示例 2  j.n.y H:i:s时间转为Ymd格式"></a>示例 2  <strong><em><font color="grey">j.n.y H:i:s时间转为Ymd格式</font></em></strong></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date_create_from_format(<span class="string">'j.n.y H:i:s'</span>, <span class="string">"05.04.19 19:07:39"</span>)-&gt;format(<span class="string">'Ymd'</span>)</span><br><span class="line">输出:<span class="number">20190405</span></span><br></pre></td></tr></table></figure>
+<h3 id="php正则匹配script标签中的内容-一般使用-，但是一些html存在换行符此表达式不生效–使用”-s-S-”替代"><a href="#php正则匹配script标签中的内容-一般使用-，但是一些html存在换行符此表达式不生效–使用”-s-S-”替代" class="headerlink" title="php正则匹配script标签中的内容(一般使用(.*?)，但是一些html存在换行符此表达式不生效–使用”([\s\S]+?)”替代)"></a>php正则匹配script标签中的内容(一般使用(.*?)，但是一些html存在换行符此表达式不生效–使用”([\s\S]+?)”替代)</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">preg_match(<span class="string">'/(?&lt;=&lt;script.*?&gt;)([\s\S]+?)(?=&lt;\/script&gt;)/'</span>,$contents,$match);</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangateng.github.io/2019/05/16/php-datetime/" data-id="ck2xap90k0005a565w8ejxoyz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="reporting-operation" class="article article-type-reporting" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/10/operation/" class="article-date">
-  <time datetime="2019-05-10T09:05:58.000Z" itemprop="datePublished">2019-05-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/operation/">ES5.6使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="对ES5-x版本文字段类型-string-聚合操作报错处理"><a href="#对ES5-x版本文字段类型-string-聚合操作报错处理" class="headerlink" title="对ES5.x版本文字段类型(string)聚合操作报错处理"></a>对ES5.x版本文字段类型(string)聚合操作报错处理</h4><p><strong><em><font color="red">Fielddata is disabled on text fields by default. Set fielddata=true on [color] in order to load fielddata in memory by uninverting the inverted index. Note that this can however use significant memory.</font></em></strong></p>
-<h5 id="针对以上问题使用字段名称-keywod可解决"><a href="#针对以上问题使用字段名称-keywod可解决" class="headerlink" title=" 针对以上问题使用字段名称.keywod可解决 "></a><strong><em> 针对以上问题使用字段名称.keywod可解决 </em></strong></h5><figure class="highlight plain"><figcaption><span>/_search</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;size&quot;: 0,</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;siteId&quot;: &#123;</span><br><span class="line">      &quot;terms&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;siteId&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;aggs&quot;: &#123;</span><br><span class="line">        &quot;sumbefore7SoldPrice&quot;: &#123;</span><br><span class="line">          &quot;sum&quot;: &#123;</span><br><span class="line">            &quot;field&quot;: &quot;before7SoldPrice&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;sellercount&quot; : &#123;</span><br><span class="line">            &quot;cardinality&quot; : &#123;</span><br><span class="line">              &quot;field&quot; : &quot;sellerId.keyword&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="删除指定条件数据"><a href="#删除指定条件数据" class="headerlink" title=" 删除指定条件数据 "></a><strong><em> 删除指定条件数据 </em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST &quot;http://host:9200/index/product/_delete_by_query&quot;  -H &apos;Content-Type: application/json&apos; -d&apos;&#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;bool&quot;: &#123;</span><br><span class="line">        &quot;filter&quot;: [&#123;</span><br><span class="line">        	&quot;range&quot;:&#123;</span><br><span class="line">        		&quot;timeLastUpdate&quot;:&#123;&quot;lt&quot;:1543622400&#125;</span><br><span class="line">          	&#125;</span><br><span class="line">        &#125; </span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&apos;</span><br></pre></td></tr></table></figure>
-<h4 id="根据两个字段差值查找"><a href="#根据两个字段差值查找" class="headerlink" title=" 根据两个字段差值查找 "></a><strong><em> 根据两个字段差值查找 </em></strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &quot;http://host:9200/index/product/_search&quot;  -H &apos;Content-Type: application/json&apos; -d&apos;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;:&#123;</span><br><span class="line">      &quot;bool&quot;:&#123;</span><br><span class="line">        &quot;filter&quot;:[&#123;</span><br><span class="line">            &quot;script&quot;:&#123;</span><br><span class="line">              &quot;script&quot;:&#123;</span><br><span class="line">                &quot;source&quot;: &quot;doc[\&quot;totalSold\&quot;].value - doc[\&quot;before7Sold\&quot;].value == 0&quot;,</span><br><span class="line">                &quot;lang&quot;: &quot;painless&quot;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&apos;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huangateng.github.io/2019/05/10/operation/" data-id="ck2xap90h0003a5653pne0eb1" class="article-share-link">Share</a>
+      <a data-url="https://huangateng.github.io/2019/05/16/php-datetime/" data-id="ck89lbwtj0007ix65b3or89lw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -385,6 +454,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -402,7 +476,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -415,23 +489,23 @@
       <ul>
         
           <li>
+            <a href="/2020/03/27/mongo/">mongo</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/08/mac-vpn/">mac-vpn</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/28/php-img/">php-img 代码片段</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/13/mysql/">mysql</a>
           </li>
         
           <li>
             <a href="/2019/08/23/mac-mamp-pcntl/">MAC MAMP环境PHP添加pcntl扩展</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/18/php-str/">php 字符串处理函数</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/29/linux/">linux 命令使用</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/29/redis/">redis 命令使用</a>
           </li>
         
       </ul>
@@ -446,7 +520,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 victor<br>
+      &copy; 2020 victor<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

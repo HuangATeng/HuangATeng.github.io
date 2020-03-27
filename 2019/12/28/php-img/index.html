@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>php-img 代码片段 | HuangTeng VS Victor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="base64格式的图片字符和图片文件相互转换1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/**	@param $base64Stream  base64格式的图片字符串数据	@param $path   保存的文件路径和文件名(不用带扩展名 自动匹配)*/function">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php-img 代码片段">
+<meta property="og:url" content="https://huangateng.github.io/2019/12/28/php-img/index.html">
+<meta property="og:site_name" content="HuangTeng VS Victor">
+<meta property="og:description" content="base64格式的图片字符和图片文件相互转换1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/**	@param $base64Stream  base64格式的图片字符串数据	@param $path   保存的文件路径和文件名(不用带扩展名 自动匹配)*/function">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-28T06:30:36.751Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php-img 代码片段">
+<meta name="twitter:description" content="base64格式的图片字符和图片文件相互转换1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/**	@param $base64Stream  base64格式的图片字符串数据	@param $path   保存的文件路径和文件名(不用带扩展名 自动匹配)*/function">
+  
+    <link rel="alternate" href="/atom.xml" title="HuangTeng VS Victor" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">HuangTeng VS Victor</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://huangateng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-php-img" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/28/php-img/" class="article-date">
+  <time datetime="2019-12-28T06:15:31.000Z" itemprop="datePublished">2019-12-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      php-img 代码片段
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="base64格式的图片字符和图片文件相互转换"><a href="#base64格式的图片字符和图片文件相互转换" class="headerlink" title="base64格式的图片字符和图片文件相互转换"></a>base64格式的图片字符和图片文件相互转换</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> $base64Stream  base64格式的图片字符串数据</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> $path   保存的文件路径和文件名(不用带扩展名 自动匹配)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">base64ToImage</span><span class="params">($base64Stream,$path)</span></span>&#123;</span><br><span class="line">	$streamList = explode(<span class="string">','</span>,$base64Stream);</span><br><span class="line">	$bin = base64_decode($streamList[<span class="number">1</span>]);</span><br><span class="line">	$extension = <span class="keyword">$this</span>-&gt;getImgExt($bin);<span class="comment">//获取真实扩展名</span></span><br><span class="line">	<span class="keyword">if</span>($ext !== <span class="keyword">false</span>)&#123;</span><br><span class="line">		file_put_contents($path . <span class="string">'.'</span> . $extension, $bin);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">exit</span>(<span class="string">'图片格式非法'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	图片文件转base64格式的图片字符串</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> $imgfile 图片路径和文件名</span></span><br><span class="line"><span class="comment">	return 图片字符串</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">imgToBase64</span><span class="params">($imgfile)</span></span>&#123;</span><br><span class="line">	$imgInfo = getimagesize($imgfile);</span><br><span class="line">	$imgBase64Src = <span class="string">"data:&#123;$imgInfo['mime']&#125;;base64,"</span> . base64_encode(file_get_contents($imgfile));</span><br><span class="line">	<span class="keyword">return</span> $imgBase64Src;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">	获取图片扩展名</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> $stream 二进制图片数据流</span></span><br><span class="line"><span class="comment">	return 图片扩展名</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getImageExtension</span><span class="params">($stream)</span></span>&#123;</span><br><span class="line">	$bitArray = [</span><br><span class="line">		<span class="string">'png'</span> =&gt; <span class="string">"\x89\x50\x4e\x47\x0d\x0a\x1a\x0a"</span>,</span><br><span class="line">		<span class="string">'jpg'</span> =&gt; <span class="string">"\xFF\xD8\xFF"</span>,</span><br><span class="line">		<span class="string">'gif'</span> =&gt; <span class="string">"GIF"</span>,</span><br><span class="line">		<span class="string">'bmp'</span> =&gt; <span class="string">'BM'</span>,</span><br><span class="line">	];</span><br><span class="line">	<span class="keyword">foreach</span> ($bitArray <span class="keyword">as</span> $imgExtension =&gt; $bit) &#123;</span><br><span class="line">		<span class="keyword">if</span> (substr($stream, <span class="number">0</span>, strlen($bit)) === $bit) &#123;</span><br><span class="line">			<span class="keyword">return</span> $imgExtension;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangateng.github.io/2019/12/28/php-img/" data-id="ck89lbwtk0008ix65i91kt1s0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/08/mac-vpn/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          mac-vpn
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/13/mysql/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mysql</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/27/mongo/">mongo</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/08/mac-vpn/">mac-vpn</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/28/php-img/">php-img 代码片段</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/13/mysql/">mysql</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/23/mac-mamp-pcntl/">MAC MAMP环境PHP添加pcntl扩展</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 victor<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
